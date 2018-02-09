@@ -1,0 +1,7 @@
+.fundo{
+    background-image: url(https://media.giphy.com/media/AiW9fVSezFYc0/giphy.gif);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #6c030300;
+    background-position: unset;
+    background-color: #fff;
+}
