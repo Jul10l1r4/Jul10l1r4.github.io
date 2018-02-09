@@ -1,6 +1,6 @@
 /* Para mudar o fundo do texto */
 .fundo{
-    background-image: url(https://media.giphy.com/media/AiW9fVSezFYc0/giphy.gif);
+    background-image: url(https://media2.giphy.com/media/BHNfhgU63qrks/source.gif);
     -webkit-background-clip: text;
     -webkit-text-fill-color: #6c030300;
     background-position: unset;
