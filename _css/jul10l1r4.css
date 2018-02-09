@@ -1,3 +1,4 @@
+/* Para mudar o fundo do texto */
 .fundo{
     background-image: url(https://media.giphy.com/media/AiW9fVSezFYc0/giphy.gif);
     -webkit-background-clip: text;
