@@ -3,8 +3,8 @@
     background-image: url(https://media2.giphy.com/media/BHNfhgU63qrks/source.gif);
     -webkit-background-clip: text;
     -webkit-text-fill-color: #6c030300;
-    background-position: unset;
-    background-color: #fff;
+    background-position: bottom;
+    background-attachment: fixed;
 }
 .grande{
  font-size: 08em;  
