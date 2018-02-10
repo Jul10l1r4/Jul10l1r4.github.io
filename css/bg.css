@@ -5,6 +5,8 @@
     color:transparent;
     background-position: bottom;
     background-attachment: fixed;
+    animation-name:totop;
+    animation-duration:0.8s
 }
 .grande{
  font-size: 08em
