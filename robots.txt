@@ -1,0 +1,3 @@
+User-agent: *
+Allow:/
+Allow:/HTTP_-_Resposta/
