@@ -1,8 +1,0 @@
-# código disponível em: https://notabug.org/Jul10l1r4/Exemplos-API-http-memes
-# Exemplo para uso de memes como respostas de erro HTTP
-
-ErrorDocument 400 https://rootthings.org/erro/recebe-erros.php?q=400
-ErrorDocument 401 https://rootthings.org/erro/recebe-erros.php?q=401
-ErrorDocument 403 https://rootthings.org/erro/recebe-erros.php?q=403
-ErrorDocument 404 https://rootthings.org/erro/recebe-erros.php?q=404
-ErrorDocument 500 https://rootthings.org/erro/recebe-erros.php?q=500
