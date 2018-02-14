@@ -3,4 +3,6 @@ Allow:/
 Allow:/index.html
 Allow:/*
 Allow:/HTTP_-_Resposta/
-Allow:/Chat-socket/
+Allow:/POP-image/
+Allow:/HTTP-Escudo/
+Allow:/Texto-farmatacao/
