@@ -3,3 +3,4 @@ Allow:/
 Allow:/index.html
 Allow:/*
 Allow:/HTTP_-_Resposta/
+Allow:/Chat-socket/
