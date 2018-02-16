@@ -1,0 +1,77 @@
+*{
+	transition-duration:3s;
+}
+/* Para as margens serem expensas */
+body,html{
+	border:0px;
+	padding:0px;
+	box-sizing:border-box;
+	margin-left:0px;
+	margin-top:0px;
+	width:100%;
+}#top{/* Este é o box do fundo entende? tem dois, um causa apenas a coloração do outro */
+	position:relative;
+	height:40em;
+	width:100%;
+	margin-left:0;
+	margin-right:0;
+	margin-top:0;
+	background-image:url(https://instagram.fnat2-1.fna.fbcdn.net/vp/c86b9975b58d82a3e5ea3526131a8d2a/5B146E0F/t51.2885-15/e35/26868816_181404315800705_76975572110016512_n.jpg);
+	background-size:cover;
+	background-position:bottom;
+	background-attachment:fixed;
+	display:table;
+	z-index:0;
+}#to{
+	position:absolute;
+	height:100%;
+	width:100%;
+	left:0;
+	right:0;
+	top:0;
+	background:rgba(101,86,86,.4);
+	display:table;
+	z-index:1;
+}
+
+#top h1{
+	z-index:3;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+	color:#fff;
+	text-shadow:0px 0px 10px #000;
+	font-weight:lighter;
+	opacity:.9;
+	animation-name:totop;/* esta animação é responsável pela animação já criada no texto.css */
+	animation-duration:3s;
+}
+section{
+	text-align:center;
+}
+h1 img{
+	height:40px
+}
+h2 img{
+	height:20px
+}
+p img{
+	height:20px
+}
+footer{
+	text-align:center;
+	border-top:2px solid #aaa;
+	padding-top:10px;
+}
+.botao>img{
+	width:128px;
+	height:128px;
+	border-radius:128px;
+	opacity:0.8;
+	transition-duration:0.6s
+}
+.botao>img:hover{
+	opacity:1;
+	transition-duration:0.6s
+}
+
