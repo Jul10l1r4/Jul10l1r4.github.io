@@ -22,5 +22,5 @@ if (navigator.userAgent.indexOf("Chrome") > -1){
 					scrollTop: b.offsetTop
 		 }, 500);
 		return false
-	}
+	});
 }
