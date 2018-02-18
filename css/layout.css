@@ -9,7 +9,8 @@ body,html{
 	margin-left:0px;
 	margin-top:0px;
 	width:100%;
-	text-align:center
+	text-align:center;
+	backgroun-color:#fff
 }#top{/* Este é o box do fundo entende? tem dois, um causa apenas a coloração do outro */
 	position:relative;
 	height:40em;
