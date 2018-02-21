@@ -12,7 +12,7 @@ const Scroll = () => {// Arrow function `ES6`, calcula a posição para que most
 }
 // Ativa a nossa função
 window.addEventListener( `scroll`, Scroll );
-const sobre = () -> {
+const sobre = () => {
   window.scroll({ // Função nativa dos browsers
 	  top: document.querySelector( `#sobre` ).getBoundingClientRect().top, // Captura a quantidade precisa de px do elemento em cada tela diferente fiii
 	  left: 0,// Obrigatório, nao queremos movimentos horizontais
