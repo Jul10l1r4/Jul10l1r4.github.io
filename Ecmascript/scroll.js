@@ -19,4 +19,4 @@ const sobre = () -> {
 	  behavior: 'smooth' // Unico efeito, dá a instrução ao browser que ele movaaaa uhuuull caraaai
    });
 }
-window.addEventListener( `scroll`, sobre );
+window.addEventListener( `click`, sobre );
