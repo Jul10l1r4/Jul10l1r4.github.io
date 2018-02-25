@@ -1,6 +1,8 @@
 *{
 	transition-duration:3s;
 }
+/* exportaçaõ da font pop */
+@import url('https://fonts.googleapis.com/css?family=Anton');
 /* Para as margens serem expensas */
 body,html{
 	border:0px;
@@ -18,7 +20,6 @@ body,html{
 	margin-left:0;
 	margin-right:0;
 	margin-top:0;
-	background-image:url(https://instagram.fnat2-1.fna.fbcdn.net/vp/c86b9975b58d82a3e5ea3526131a8d2a/5B146E0F/t51.2885-15/e35/26868816_181404315800705_76975572110016512_n.jpg);
 	background-size:cover;
 	background-position:bottom;
 	background-attachment:fixed;
@@ -47,6 +48,21 @@ body,html{
 	opacity:.9;
 	animation-name:totop;/* esta animação é responsável pela animação já criada no texto.css */
 	animation-duration:3s;
+}.default{
+	background-image:url(https://instagram.fnat2-1.fna.fbcdn.net/vp/c86b9975b58d82a3e5ea3526131a8d2a/5B146E0F/t51.2885-15/e35/26868816_181404315800705_76975572110016512_n.jpg);
+}.dev{
+	background-image:url(../assets/dev.jpeg)
+}.pop{
+	background-image:url(../assets/pop.jpeg);
+}.pop-t{
+	opacity:1;
+	font-family:'Anton';
+	font-weight:bold;
+	font-size:80px;
+	color:#4de;
+	text-shadow:5px 0px 0px #ff0;
+	border:5px dashed #0ff;
+	background:rgba(0,0,0,0.5);
 }
 section{
 	text-align:center;
@@ -66,6 +82,12 @@ p img{
 footer{
 	text-align:center;
 	padding-top:10px;
+}
+.top6{
+	margin-top:60px;
+}
+.separador-top{
+	border-top:4px solid #ddd;
 }
 .botao>img{
 	width:128px;
