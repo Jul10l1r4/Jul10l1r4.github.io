@@ -48,10 +48,12 @@ body,html{
 	opacity:.9;
 	animation-name:totop;/* esta animação é responsável pela animação já criada no texto.css */
 	animation-duration:3s;
+	cursor:pointer
 }.default{
 	background-image:url(https://instagram.fnat2-1.fna.fbcdn.net/vp/c86b9975b58d82a3e5ea3526131a8d2a/5B146E0F/t51.2885-15/e35/26868816_181404315800705_76975572110016512_n.jpg);
 }.dev{
-	background-image:url(../assets/dev.jpeg)
+	background-image:url(../assets/dev.jpeg);
+	background-position:top;
 }.pop{
 	background-image:url(../assets/pop.jpeg);
 }.pop-t{
