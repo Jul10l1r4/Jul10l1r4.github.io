@@ -123,57 +123,88 @@
 					dê um enorme salto, já que ela não estará sujeita a mudanças de triangulações.
 				</p>
 				<figure>
-					<img src="loading.jpeg" alt="Página carregando, loading..."/>
+					<img src="loading.jpeg" alt="Página carregando, loading..." title="Por ser construido em linguagens de baixo nível o carregamento termina sendo mais performático"/>
 					<figcaption>
 						Exemplo de como a página carrega, este processo de carregamento olhando a olho nú faz parecer até que é carregado de cima para baixo
-						quando na verdade é em triangulos
+						quando na verdade é em triangulos.
 					</figcaption>
 				</figure>
-				<h1>Continuaaa</h1>
+				<h1>Motor JS</h1>
+				<p>
+					Não diferente da renderização dos browsers o motor JS também possui suas singularidades, dentro de todos os motores o mais performático
+					é o chamado de V8, ele funciona passando por alguns processos.
+				</p>
 				<figure>
-					<img src="a.jpeg" alt="ALEGRIA, pqp"/>
-					<figcaption>FUNCIONOOOOOUUUU, VOU ANOTAR ESTA DATA EM MINHA AGENDAAAAAA</figcaption>
+					<img src="processo.jpeg" alt="Processo do JS"/>
+					<figcaption>
+						Exemplificando para que fique um pouco mais claro.
+					</figcaption>
 				</figure>
 				<p>
-					MEU DESUS, EU NÃO ACREDITOOO!
+					Como vemos o JS passa por 7 processos, o que faz com que seja um pouco mais dificil de fazer com que ele seja executado pelo seu relativamente
+					longo processo, e ainda considerando que sua tipagem é relativamente pouca, e isso termina fazendo ele não ser tão performático, mas
+					tenho certeza que se você desenvolve em JS provavelmente não tenha notado diferença em sua performance, já que os browsers priorizam o seu
+					processamento
 				</p>
-				<h1>VEJA COMO É</h1>
-				<h2>Como funciona</h2>
 				<p>
-					Basicamente, existe uma imagem de fundo e o código que eu já havia dito, o <code>background-clip</code> ele fará com que o fundo de fato seja dentro da imagem, assim como um papel furado, e o fundo será a parte de trás do papel entende? algo assim:
+					Os outros browsers que não utilizam o V8 são óbviamente menos performático, vejamos qual o efeito que uma biblioteca simples causa em 
+					nosso carregamento, vejamos o Jquery(Já em que iremos criar uma solução).
 				</p>
 				<figure>
-					<img src="papel.jpeg" alt="imagem por trás de um papel rasgado">
-					<figcaption>Este é o que seria a cor do texto, porém não é apenas uma cor, mas é uma imagem!</figcaption>
+					<img src="js.jpeg" alt="Processo de carregamento utilizando o Jquery">
+					<figcaption>
+						Exemplificando para que fique um pouco mais claro, usando o Jquery como exemplo.
+					</figcaption>
 				</figure>
-				<h2>Vamos aos códigos</h2>
-				<p>
-					E você que não leu o texto e veio logo a este tópico deve está pensando:
-					<blockquote>Nossa, deve ser trilhóes de linhas de códigos</blockquote>
-					Veja agora mesmo:
-				</p>
-				<figure>
-					<script src="https://gist.github.com/Jul10l1r4/28ab71667d33e1bae8a36f9178e9fd43.js"></script>
-					<figcaption>Muitos códigos, não? </figcaption>
-				</figure>
-				<p>
-					A imagem que eu utilizei foi esta imagem <a href="https://media.giphy.com/media/JGQe5mxayVF04/giphy.gif" target="_blank">aqui</a>, veja como fica este códigozinho:
-				</p>
-				<figure>
-					<p data-height="146" data-theme-id="0" data-slug-hash="oEWNrZ" data-default-tab="result" data-user="Jul10l1r4" data-embed-version="2" data-pen-title="oEWNrZ" class="codepen">See the Pen <a href="https://codepen.io/Jul10l1r4/pen/oEWNrZ/">oEWNrZ</a> by Julio Lira (<a href="https://codepen.io/Jul10l1r4">@Jul10l1r4</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-					<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
-						<figcaption>Gostou? a cor ficou muito escura né?! enfim, faça como quiser, use para você</figcaption>
-				<p>
-				 Enfim, hoje será um dia marcado em minha vida, e acredito que na sua também né?! Eu fiquei extremamente alegre depois dessa descoberta
-				</p>
-				<h2>Esta será a reação de quando verem você mesmo usando em qualquer coisa</h2>
-				<figure>
-				  <img src="julio.gif" alt="Vendo fundo em um textoo!"/>
-					<figcaption><span class="emoj">HAHAHA😉</span></figcaption>
-				</figure>
-				<p>
-					Enfim, era isso... boas práticas
-				</p>
+			<p>
+				No caso o processo icluirá mais um nível de abstração que ao invés de sua entrada de códigos será as várias funções contidas no Jquery,
+				ficando o sucessivamente assim: 
+				
+			</p>
+			<p>
+				<code>
+					(Seus códigos) → (Funções em JS do Jquery) → (Criação de tipagens) → (Arvores de sintaxes) → (Bytecode)
+					→ (Pegar feedback) → (Compilação) → Execução de código otimizado
+				</code> "UFFAA!!!"
+			</p>
+			<p>
+				Vendo assim notamos que uma forma bastante interessante que poderiamos fazer pra melhorar a nossa performance não é?! Mas antes
+				vamos dar uma uma pequena analizada em como funciona o Jquery então.
+			</p>
+			<figure>
+				<img src="jq.jpeg" alt="Jquery"/>
+				<figcaption>Simbolo (I 🖤 jquery)</figcaption>
+			</figure>
+			<p>
+				O Jquery é um biblioteca orientada a objetos que funciona baseada em funções responsávei por facilitar o desenvolvimento, e ajuda bastante 
+				no desenvolvimento ágil, eu quem o diga! E a função principal dela é invocada usando o <code>$</code>, todos os elementos selecionados usando
+				esta função retorna uma estrutura de objeto jquery(que é algo como um array), mas para que isso aconteça, existem várias funções que são invocadas
+				funções dentro de funções, fazendo assim com que o browser tenha que execer um maior trabalho para que processe o seu JS.
+			</p>
+			<p>
+				Jquery é tão conhecido quando o JS, quando aprendi, uma das primeiras coisas foi "Javascript & Jquery", para mim era tudo a mesma coisa e seria
+				impossível largar o Jquery, e o eu fiquei tao dependente quando vários outros desenvolvedores, para fazer uma conexão <strong>XHR</strong> sem 
+				o Jquery para mim era algo absurdamente impossível por exemplo, e ainda mais impossível fazer efeito de rolagem suave, ou efeito <strong>scroll</strong>,
+				mas levando tudo isso em conta, vamos aos códigos.
+			</p>
+			<h1>Mão na massa</h1>
+			<p>
+				Publiquei um artigo onde falava de <a href="888888888888" target="_blank">como fazer efeito scroll em uma linha de código css</a>! Mas, ao fazer vários
+				testes notei que funcionou em todos os navegadores, exceto no mais usado(que é o Google Chrome, com 
+				<a href="http://gs.statcounter.com/browser-market-share/all/brazil" target="_blank">79.8%</a> de uso no Brasil) e, sim somos desenvolvedores
+				mas o nosso cliente não tem culpa de seu browser não possuir suporte a não ser que instale um complemento(o que se eu fosse acessar um site
+				que me pedisse isso eu nunca instalaria este plug, só pra acessar seu site), então após muitos estudos cheguei a esse resultado, eu e o 
+				<a href="https://steemit.com/@suissa">Suissa</a> tentamos por muito tempo encontrar algo, me juntei com meu amigo 
+				<a href="https://notabug.org/NicolasMCP" target="_blank" title="Nicolas Ramos desenvolvedor ah mais de 20 anos de linguagens web e desktop">
+				Nicolas Ramos
+			</a> decidimos então dedicar todo esse tempo de estudo, e encontrar qual a forma o Jquery consegue fazer esse efeito.
+			</p>
+			<p>
+				
+			</p>
+			<p>
+		
+			</p>
 			</section>
 			<footer class="separador-top top6" style="opacity:0">
        <br/>
