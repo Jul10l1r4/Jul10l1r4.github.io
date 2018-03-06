@@ -223,8 +223,30 @@
 				Esta função <code>scroll</code> é a que faz com que este elemento seja rolado conforme diz 
 				<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/scroll" target="_blank">
 					nesse artigo
-				</a>  da MDN, mas a diferença é que as várias vezes que li esse artigo, ele não explica nem a possibilidade de acrescentar jsons, e isso 
+				</a>  da MDN, mas a diferença é que as várias vezes que li esse artigo, ele não explica nem a possibilidade de acrescentar objetos, e isso 
 				justifica a não utilização desse recurso.
+			</p>
+			<h2>Aperfeiçoando :emoj:</h2>
+			<p>
+				Agora que você viu na prática como funciona, vamos olhar uma forma prática de fazer isso em uma função(no caso um botão de "voltar ao topo"),
+				dá uma olhada nesse código
+			</p>
+			<figure>
+				<p data-height="265" data-theme-id="0" data-slug-hash="rJEYxr" data-default-tab="js,result" data-user="Jul10l1r4" data-embed-version="2" data-pen-title="Scroll efect, single page nav" class="codepen">See the Pen <a href="https://codepen.io/Jul10l1r4/pen/rJEYxr/">Scroll efect, single page nav</a> by Julio Lira (<a href="https://codepen.io/Jul10l1r4">@Jul10l1r4</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+				<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+				<figcaption>Usei quebra de linha no código para facilitar a leitura</figcaption>
+			</figcaption>
+			<p>
+				Acharei bem natural se você estiver na dúvida para saber o que faz a função <code>getBoundingClientRect()</code>
+				<a href="https://developer.mozilla.org/pt-BR/docs/Web/API/Element/getBoundingClientRect" target="_blank">aqui</a>
+				explica bem detalhado o seu funcionamento, a grosso modo ela captura a distancia de quaquer que seja o lugar, exemplo ela pode ser usado
+				para capturar a distancia de determinado elemento até o lado <code>0</code> do lado direito dessa forma
+			 <code>getBoundingClientRect().right</code>
+			</p>
+			<h2>Conclusão</h2>
+			<p>
+				Somos desenvolvedores, desenvolvemos como queremos, mas muitas vezes devemos abrir mão de coisas que nos parece ótimo e na verdade é um ciclo
+				vicioso de más formas.
 			</p>
 			</section>
 			<footer class="separador-top top6" style="opacity:0">
