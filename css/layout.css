@@ -2,7 +2,7 @@
 	transition-duration:3s;
 }
 /* exportaçaõ da font pop */
-@import url('https://fonts.googleapis.com/css?family=Anton');
+@import url("https://fonts.googleapis.com/css?family=Anton");
 /* Para as margens serem expensas */
 body,html{
 	border:0px;
@@ -12,7 +12,7 @@ body,html{
 	margin-top:0px;
 	width:100%;
 	text-align:center;
-	backgroun-color:#fff
+	background-color:#fff
 }#top{/* Este é o box do fundo entende? tem dois, um causa apenas a coloração do outro */
 	position:relative;
 	height:40em;
@@ -110,7 +110,7 @@ a#down{
 	margin:auto;
 	position:relative;
 	padding:5px 14px;
-	display: relative;
+	position: relative;
 	top:-45px;
 	z-index:3;
 	font-size:40px;
