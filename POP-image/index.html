@@ -9,7 +9,7 @@
       <link rel="stylesheet" href="../css/layout.css"/>
 			<link rel="icon" href="logo.gif" type="image/gif"/>
       <meta name="author" content="Julio Lira"/>
-			<meta name="theme-color" content="#ffff00">
+			<meta name="theme-color" content="#666">
       <meta name="robots" content="index, follow">
       <meta property="og:site_name" content="POP-IMAGE" />
       <meta property="og:url" content="https://jul10l1r4.github.io/POP-image" />
@@ -62,9 +62,9 @@
 <h1>POP-image <span class="emoj">🍺</span></h1>
 
 <p>Tenha fluidez ao abrir uma imagem, vejo por aí muitos sites, onde apertam na imagem e sim a imagem abre grande, mas abre uma nova
- aba e realmente acho um pé no saco, porque tenho sempre que for abrir a pertar no botão de voltar do navegador e voltar a página onde
- eu estava, mas este box faz apenas com JS puro um box que abre a imagem suspensa na mesma página, a estilização fica por sua conta, mas
- se for preguiçoso já temos códigos montados, é só integrar.</p>
+ aba e realmente acho um pé no saco, porque tenho sempre que for abrir apertar no botão de voltar do navegador e voltar a página onde
+ eu estava, mas este box faz apenas com JS puro um box que abre a imagem suspensa na mesma página(light box), a estilização fica por sua conta, mas
+ se for preguiçoso já temos códigos montados, é só integrar, se quiser ver e criar uma sua, faça você mesmo.</p>
 
 <h2>Veja o nosso manual <span class="emoj">📒</span></h2>
 
@@ -73,18 +73,17 @@ der uma atualização não venha danificar sua aplicação.</p>
 
 <h1>Ele criará um botão de voltar ao topo <span class="emoj">🔝</span></h1>
 
-<p>Usando este suporte onde se baseia em animação com <code>CSS3</code> tem suporte em todos os navegadores exceto no Google Chrome,
- então fizemos um verificador, onde quando detecta o browser como o Google Chrome ele importa o Jquery, e cria a animação de deslize 
+<p>Usando este suporte onde se baseia em animação com <code>JS</code> tem suporte em todos os navegadores, e cria a animação de deslize 
 até o topo.</p>
 
 <h2>Use o efeito scroll, sem carregar trilhões de códigos <span class="emoj">🔥</span></h2>
 
-<p>O efeito de deslizamento é algo almejado por muitos e também bastante usado, trás aquela sensação de qualidade e de minimalismo,
- porém, nem sempre passa de sensação, muitas vezes os códigos são eternamente monstrons, são bibliotecas de mais 3000 linhas de códigos 
-que importam muitas coisas, leia um artigo sobre isso em <a href="https://medium.com/@jul10l1r4/ol%C3%A1-6441fc8412/">@Jul10l1r4</a>(no medium)
-que explica a facilidade de usar esta ferramenta <strong>NATIVA</strong> do CSS <span class="emoj">😏</span>, e para o Google Chrome, fizemos
- ajustes que é realmente necessário
-carregar esses códigos, então para carregar apenas no Chrome fizemos este script.</p>
+<p>
+	O efeito é feito com usando JS, poupando o máximo de processamentos necessários do lado do cliente, então fizemos algo sem a utilização de biblioteca,
+	mas de uma forma eficiente, veja como você mesmo pode criar um botão assim com a função 
+	<a href="https://jul10l1r4.github.io/artigos/Seja_performatico_-_efeito_scroll_com_6_linhas_sem_jquery/" target="_blank">scroll em seis linhas</a>,
+	usando esses códigos do artigo é que montamos uma estrutura leve e performática para facilitar a utilização.
+</p>
 
 			<footer class="separador-top top6" style="opacity:0">
        <br/>
