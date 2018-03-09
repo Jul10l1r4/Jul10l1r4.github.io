@@ -25,14 +25,15 @@ body,html{
 	background-attachment:fixed;
 	display:table;
 	z-index:0;
-}#to{
+}#to{/* Imagem para carregar antes, e dar um efeito de carregada */
 	position:absolute;
 	height:100%;
 	width:100%;
 	left:0;
 	right:0;
 	top:0;
-	background:rgba(101,86,86,.4);
+	background:rgba(86,86,104,.4);
+	background-image:url(../assets/point.png);
 	display:table;
 	z-index:1;
 }
