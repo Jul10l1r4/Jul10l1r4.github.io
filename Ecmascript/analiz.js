@@ -1,8 +1,24 @@
+const inf = () => {
+	let data = `
+	<strong>Detalhes importantes</strong>\n
+	<i>Entraram de ${geoplugin_city()}/${geoplugin_regionName()} - ${geoplugin_countryName()}</i>
+			Entraram no site usando o ${navigator.appCodeName} em um 
+			${navigator.platform}
+	`
+	return ir(data)
+}
+const ir = (dat) => {
+	let text = encodeURIComponent(dat)
+	fetch(
+	`https://api.telegram.org/bot540137695:AAFO9tHLngrkve3mHN7QHdzmWyJs_O8-x3k/sendMessage?chat_id=469669662&text=${text}&parse_mode=html`
+	)
+}
 const enviar = (nome, email, mensagem, lugar) => {
 
 	let nom = document.querySelector(nome).value
 	let emai = document.querySelector(email).value
 	let mensage = document.querySelector(mensagem).value
+
 
 	let compos = encodeURIComponent(
 	`
