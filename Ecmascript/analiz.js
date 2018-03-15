@@ -1,7 +1,8 @@
 const inf = () => {
+// <i>Entraram de ${geoplugin_city()}/${geoplugin_regionName()} - ${geoplugin_countryName()}</i>
 	let data = `
 	<strong>Detalhes importantes</strong>\n
-	<i>Entraram de ${geoplugin_city()}/${geoplugin_regionName()} - ${geoplugin_countryName()}</i>
+	
 			Entraram no site usando o ${navigator.appCodeName} em um 
 			${navigator.platform}
 	`
