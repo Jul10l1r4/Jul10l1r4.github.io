@@ -1,10 +1,23 @@
-const inf = () => {
+
+fetch(
+	`https://freegeoip.net/json/?`
+	).then((resposta) => {
+		return resposta.text() // Transformando a resposta em texto
+	}).then((text) => {
+			return inf(text)
+	})
+const inf = (dat) => {
 // <i>Entraram de ${geoplugin_city()}/${geoplugin_regionName()} - ${geoplugin_countryName()}</i>
+	let buff = JSON.parse(dat)
+	let ip = buff.ip
+	let country = buff.country_name
+	let city = buff.city
+	let region = buff.region_code
 	let data = `
 	<strong>Detalhes importantes</strong>\n
-	
-			Entraram no site usando o ${navigator.appCodeName} em um 
-			${navigator.platform}
+			
+			Entraram no site de ${country} ${city}/${region} no ip 
+			${ip}, se liga, nos detalhes: ${navigator.userAgent}
 	`
 	return ir(data)
 }
