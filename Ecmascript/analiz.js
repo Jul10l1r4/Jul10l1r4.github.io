@@ -1,4 +1,3 @@
-
 fetch(
 	`https://freegeoip.net/json/?`
 	).then((resposta) => {
