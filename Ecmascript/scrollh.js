@@ -6,33 +6,33 @@ let f = document.querySelector( `.seguranca` )
 let g = document.querySelector( `.baixar` )
 // Efeito scroll, rolagem da página, pega a barra na esquerda e muda ela para ficar fixa
 const Scroll = () => {// Arrow function `ES6`, calcula a posição para que mostre o efeito
-    if(window.pageYOffset + ((window.innerHeight * 3) / 5) > b.offsetTop) {
-			b.setAttribute( `style`, `opacity:1;transition-duration:2s` )
+    if(window.pageYOffset + ((window.innerHeight * 3) / 3.5) > b.offsetTop) {
+			b.setAttribute( `style`, `opacity:1;transition-duration:1s` )
 		}else{
 			b.setAttribute( `style`, `opacity:0;transition-duration:1s` )
 		}
-		if(window.pageYOffset + ((window.innerHeight * 3) / 5) > c.offsetTop) {
-			c.setAttribute( `style`, `opacity:1;transition-duration:2s` )
+		if(window.pageYOffset + ((window.innerHeight * 3) / 3.5) > c.offsetTop) {
+			c.setAttribute( `style`, `opacity:1;transition-duration:1s` )
 		}else{
 			c.setAttribute( `style`, `opacity:0;transition-duration:1s` )
 		}
-		if(window.pageYOffset + ((window.innerHeight * 3) / 5) > d.offsetTop) {
+		if(window.pageYOffset + ((window.innerHeight * 3) / 3.5) > d.offsetTop) {
 			d.setAttribute( `style`, `opacity:1;transition-duration:1s;transform: translateX(0px)` )
 		}else{
 			d.setAttribute( `style`, `opacity:0;transform: translateX(-100px);transition-duration:1.3s` )
 		}
-		if(window.pageYOffset + ((window.innerHeight * 3) / 5) > e.offsetTop) {
-			e.setAttribute( `style`, `opacity:1;transition-duration:2s` )
+		if(window.pageYOffset + ((window.innerHeight * 3) / 3.5) > e.offsetTop) {
+			e.setAttribute( `style`, `opacity:1;transition-duration:1s` )
 		}else{
 			e.setAttribute( `style`, `opacity:0;transition-duration:1s` )
 		}
-		if(window.pageYOffset + ((window.innerHeight * 3) / 5) > f.offsetTop) {
-			f.setAttribute( `style`, `opacity:1;transition-duration:2s` )
+		if(window.pageYOffset + ((window.innerHeight * 3) / 3.5) > f.offsetTop) {
+			f.setAttribute( `style`, `opacity:1;transition-duration:1s` )
 		}else{
 			f.setAttribute( `style`, `opacity:0;transition-duration:1s` )
 		}
-		if(window.pageYOffset + ((window.innerHeight * 3) / 5) > g.offsetTop) {
-			g.setAttribute( `style`, `opacity:1;transition-duration:2s` )
+		if(window.pageYOffset + ((window.innerHeight * 3) / 3.5) > g.offsetTop) {
+			g.setAttribute( `style`, `opacity:1;transition-duration:1s` )
 		}else{
 			g.setAttribute( `style`, `opacity:0;transition-duration:1s` )
 		}
