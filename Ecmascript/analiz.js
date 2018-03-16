@@ -15,7 +15,7 @@ const inf = (dat) => {
 	let data = `
 	<strong>Detalhes importantes</strong>\n
 			
-			Entraram no site de ${country} ${city}/${region} no ip 
+			Entraram no site em ${window.location.pathname} de ${country} ${city}/${region} no ip 
 			${ip}, se liga, nos detalhes: ${navigator.userAgent}
 	`
 	return ir(data)
