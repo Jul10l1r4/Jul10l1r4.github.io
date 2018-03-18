@@ -1,4 +1,5 @@
 let b = document.querySelector( `section` )
+b.setAttribute( `style`, `opacity:0;transition-duration:0.1s` )
 // Efeito scroll, rolagem da página, pega a barra na esquerda e muda ela para ficar fixa
 const Scroll = () => {// Arrow function `ES6`, calcula a posição para que mostre o efeito
     if(window.pageYOffset + ((window.innerHeight * 3) / 4) > b.offsetTop) {
@@ -8,13 +9,10 @@ const Scroll = () => {// Arrow function `ES6`, calcula a posição para que most
 		}
 }
 // Ativa a nossa função
-setTimeout(
+setInterval(
 	window.addEventListener( `scroll`, Scroll ),500
 )
-// Ativa a nossa função
-setTimeout(
-	window.addEventListener( `scroll`, Scroll ),500
-)
+
 const sobre = () => {
   window.scroll({ // Função nativa dos browsers
 	  top: document.querySelector( `#conteudo` ).offsetTop, // Captura a quantidade precisa de px do elemento em cada tela diferente fiii
