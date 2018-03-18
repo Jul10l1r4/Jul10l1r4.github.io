@@ -1,7 +1,6 @@
 User-agent: *
 Allow:/
 Allow:/index.html
-Allow:/*
 Allow:/HTTP_-_Resposta/
 Allow:/POP-image/
 Allow:/HTTP-Escudo/
