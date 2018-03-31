@@ -6,10 +6,6 @@ const send = () => {
 	fetch(
 		`https://api-email.000webhostapp.com/?name=${name}&&email=${email}&&message=${email}&&message=${message}&&dest=${dest}`
 			).then(function(resposta) {
-		return resposta
-			.text() // Transformando a resposta em texto
-			.then((text) => {
-				   alert("text");
+				alert(resposta) // Transformando a resposta em texto
 			});
-	});
 }
