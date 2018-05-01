@@ -7,7 +7,9 @@ const vai = ( a, b ) => {// passando valores com poucos como letras.. menos dado
 	// Ele pegará o elemento a que será levada na função e colocará no src, do box ja existente
 	document.getElementById ( 'default' ).src = a
 	// Pegará nosso box e transformará em block, no caso visível
-	document.getElementById ( 'bloco' ).style.display = 'fixed'
+	document.getElementById ( 'bloco' ).style.display = 'block'
+	//faz o bloco ser fixo
+	document.getElementById ( 'bloco' ).style.position = 'fixed'
 	// pegará o valor do texto levado como b, e transferir para o caption, o que causará aquela legenda
 	let captionText = document.getElementById( 'caption' )
 	// Isto far com que dentro de nossa variável ele insira a descrição como eu já tinha dito
