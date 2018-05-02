@@ -20,7 +20,7 @@ const vai = ( a, b ) => {// passando valores com poucos como letras.. menos dado
 // Função que fechará  box
 const normaliz = (x) => {
 	// retira o box geral
-	document.querySelector(x).style.position = 'none'
+	document.querySelector(x).style.display = 'none'
 	// retira o script do body
 	document.querySelector(x).onscroll = ""
 }
