@@ -14,7 +14,17 @@ const vai = ( a, b ) => {// passando valores com poucos como letras.. menos dado
 	let captionText = document.getElementById( 'caption' )
 	// Isto far com que dentro de nossa variável ele insira a descrição como eu já tinha dito
 	captionText.innerHTML = b
+	// Mudará o body para fechar o bagui quando scroolar
+	document.querySelector( 'body' ).setAttribute( 'onscroll', 'normaliz( `#bloco` )' )
 }
+// Função que fechará  box
+const normaliz = (x) => {
+	// retira o box geral
+	document.querySelector(x).style.position = 'none'
+	// retira o script do body
+	document.querySelector(x).onscroll = ""
+}
+
 
 // Scroll, ao topo ^^
 // Puta que pariu! esse código só isso vai rodarrr coisas que precisaria de toda uma LIBBBB
