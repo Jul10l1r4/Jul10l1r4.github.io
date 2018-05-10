@@ -16,6 +16,7 @@ const vai = ( a, b ) => {// passando valores com poucos como letras.. menos dado
 	captionText.innerHTML = b
 	// Mudará o body para fechar o bagui quando scroolar
 	document.querySelector( 'body' ).setAttribute( 'onscroll', 'normaliz( `#bloco` )' )
+	document.getElementById( 'bloco' ).setAttribute( 'onclick', 'normaliz( `#bloco` )' )
 }
 // Função que fechará  box
 const normaliz = (x) => {
