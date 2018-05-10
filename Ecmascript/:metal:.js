@@ -17,13 +17,18 @@ const vai = ( a, b ) => {// passando valores com poucos como letras.. menos dado
 	// Mudará o body para fechar o bagui quando scroolar
 	document.querySelector( 'body' ).setAttribute( 'onscroll', 'normaliz( `#bloco` )' )
 	document.getElementById( 'bloco' ).setAttribute( 'onclick', 'normaliz( `#bloco` )' )
+	// animaçãozinha
+	document.getElementById( 'bloco' ).setAttribute( 'style', 'animation-name: in;animation-duration:.8' )
 }
 // Função que fechará  box
 const normaliz = (x) => {
-	// retira o box geral
-	document.querySelector(x).style.display = 'none'
-	// retira o script do body
-	document.querySelector(x).onscroll = ""
+	document.querySelector(x).setAttribute( 'style', 'animation-name: out;animation-duration:.8' )
+  settimeout(()=>{
+		// retira o box geral
+		document.querySelector(x).style.display = 'none'
+		// retira o script do body
+		document.querySelector(x).onscroll = ""
+	},800);
 }
 
 
