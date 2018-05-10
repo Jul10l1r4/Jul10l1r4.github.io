@@ -5,7 +5,7 @@
 // Image galeria foda-see jquery
 const vai = ( a, b ) => {// passando valores com poucos como letras.. menos dados a alocar
 	// Ele pegará o elemento a que será levada na função e colocará no src, do box ja existente
-	document.getElementById ( 'default' ).src = a
+	document.querySelector ( '#default>img' ).src = a
 	// Pegará nosso box e transformará em block, no caso visível
 	document.getElementById ( 'bloco' ).style.display = 'block'
 	//faz o bloco ser fixo
