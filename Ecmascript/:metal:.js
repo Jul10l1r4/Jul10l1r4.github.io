@@ -27,7 +27,7 @@ const normaliz = (x) => {
 		// retira o box geral
 		document.querySelector(x).style.display = 'none'
 		// retira o script do body
-		document.querySelector(x).onscroll = ""
+		document.querySelector( 'body' ).setAttribute( 'onscroll', ' ' )
 	},800);
 }
 
