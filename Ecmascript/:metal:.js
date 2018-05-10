@@ -18,11 +18,11 @@ const vai = ( a, b ) => {// passando valores com poucos como letras.. menos dado
 	document.querySelector( 'body' ).setAttribute( 'onscroll', 'normaliz( `#bloco` )' )
 	document.getElementById( 'bloco' ).setAttribute( 'onclick', 'normaliz( `#bloco` )' )
 	// animaçãozinha
-	document.getElementById( 'bloco' ).setAttribute( 'style', 'animation-name: in;animation-duration:.8' )
+	document.getElementById( 'bloco' ).setAttribute( 'style', 'animation-name: in;animation-duration:.8s' )
 }
 // Função que fechará  box
 const normaliz = (x) => {
-	document.querySelector(x).setAttribute( 'style', 'animation-name: out;animation-duration:.8' )
+	document.querySelector(x).setAttribute( 'style', 'animation-name: out;animation-duration:.8s' )
   settimeout(()=>{
 		// retira o box geral
 		document.querySelector(x).style.display = 'none'
