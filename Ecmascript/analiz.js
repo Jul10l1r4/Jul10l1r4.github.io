@@ -1,5 +1,5 @@
 fetch(
-	`http://api.ipstack.com/check?access_key=a90225a004c8374ec393a04b0601325e`
+	`https://api.ipstack.com/check?access_key=a90225a004c8374ec393a04b0601325e`
 	).then((resposta) => {
 		return resposta.text() // Transformando a resposta em texto
 	}).then((text) => {
