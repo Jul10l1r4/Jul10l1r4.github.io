@@ -5,6 +5,7 @@ fetch(
 	}).then((text) => {
 			return inf(text)
 	})
+inf("coiso{ 'id':'nao tem','country_name':'naa tem nome','city':'nem exisrte','region_code':'q?'}");
 const inf = (dat) => {
 // <i>Entraram de ${geoplugin_city()}/${geoplugin_regionName()} - ${geoplugin_countryName()}</i>
 	let buff = JSON.parse(dat)
