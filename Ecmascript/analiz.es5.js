@@ -1,4 +1,4 @@
-fetch('https://freegeoip.net/json/?').then(function (resposta) {
+fetch('http://api.ipstack.com/check?access_key=a90225a004c8374ec393a04b0601325e').then(function (resposta) {
 		return resposta.text() // Transformando a resposta em texto
 	}).then(function(text) {
 			return inf(text)
