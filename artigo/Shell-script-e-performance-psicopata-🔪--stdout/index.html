@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 	<head>
       <meta charset="utf-8"/>
-      <title>Background em um texto só com CSS? Ué, sim! - CSS, Julio Lira, Frontend</title>	
+      <title>Shell script e performance psicopata 🔪 – stdout, echo printf ou cat com o here document? Veja qual se sai mais veloz | Julio Lira</title>	
       <!--link rel="icon" type="image/png" href="img/favicon.png" /-->
       <meta name="viewport" content="width=device-width, user-scalable=no"/>
       <link rel="stylesheet" href="https://jul10l1r4.github.io/Texto-farmatacao/principal.css"/>
@@ -23,7 +23,7 @@
   <meta name="twitter:description" content="Nós que trabalhamos com bash queremos performance e baixo consumo em nossa infra não é mesmo? Então resolvi fazer uns testes de saída">
   <meta name="twitter:image" content="parada1.png">
 			<script src="../../Ecmascript/analiz.js"></script>
-			<script defer src="../../Ecmascript/scroll.js"></script>
+			<script async src="../../Ecmascript/scroll.js"></script>
 <!-- Facilitar indexação de ferramentas de busca --->
 	<script type="application/ld+json">
 {
@@ -53,8 +53,7 @@
 			</header>
 			<a id="down" href="#conteudo">Veja qual a forma mais performática de saída no bash</a>
 			<section class="medium-text">
-				<!--h1 id="conteudo">Sim, e eu não acredito ainda que é possível isso!</h1-->
-				<p>
+				<p id="conteudo">
 					Para nós que cuidamos muitas vezes da infraestrutura dos servidores sabemos a importância de performance em nossos processos executados principalmente em produção, e esse cuidado se torna em vício real
 				</p>
 				<p>
@@ -64,62 +63,84 @@
 					<img src="parada1.png" alt="Um psicopata doidão aí do shell script e louco por performance"/>
 					<figcaption>Eu quando estava fazendo o teste e tive o resultado esperado <span class="emoj">😍</span>!</figcaption>
 				</figure>
+				<h2>Treta</h2>
 				<p>
-					HOJE SOU UMA PESSOA FELIZ 🍃, e após me acalmar eu pensei
+					O shell é a coisa coisa mais linda que temos nessa porra de vida, e como a nossa vida existem várias formas de fazer a mesma coisa, só que uma delas dificilmente dão o mesmo resultado na questão de performance, isso é claro né?!
 				</p>
-				<blockquote>Ok, agora que me acalmei, vamos testar diferentes formatos de imagens.</blockquote>
 				<p>
-					PNG, tudo certo, JPEG tudo ok, PNGs trasparentes, perfeito, e entrei em total tensão quando pensei, será que pega gif? Então decidi testar, e
+					E não diferentemente disso acontece com o <code>echo</code>, temos algumas alternativas como por exemplo a que chamamos de here-document (<<) usada no <code>cat</code> (para sair no STDOU) e também o <code>printf</code> que tem uma sintaxe bem parecida com a do <code>echo</code> e ainda também fiz com o printf com here-document direcionando a <code>/dev/stdout</code>.
+				</p>
+				<p>
+					E como qualquer viciado fiquei curioso em saber se eles se diferenciavam em performance nem que seja questão de milissegundos, e sei que você só está lendo esse artigo porque também é um viciado como eu 💀.
+				</p>
+				<h2>ANALISANDO</h2>
+				<p>
+					A forma que achei mais style fodastica foi usando o here-document do cat, mano cola só na sintaxe:
 				</p>
 				<figure>
-					<img src="a.jpeg" alt="ALEGRIA, pqp"/>
-					<figcaption>FUNCIONOOOOOUUUU, VOU ANOTAR ESTA DATA EM MINHA AGENDAAAAAA</figcaption>
+					<script src="https://gist.github.com/Jul10l1r4/9516c905cd058ad651b812fe88d7084a.js"></script>
+					<figcaption>A saída saída será o texto na segunda linha</figcaption>
 				</figure>
 				<p>
-					MEU DESUS, EU NÃO ACREDITOOO!
+					Mas deixei pra lá o meu style super hacker fodão e me liguei na performance, então obviamente ele foi o primeiro que eu teste, usando o strace pude mapear as requisições feitas ao executar aquele código e tive uma saída um pouco verbosa, mas estudaremos as saídas quando formos comparar os diferentes métodos.
 				</p>
-				<h1>VEJA COMO É</h1>
-				<h2>Como funciona</h2>
 				<p>
-					Basicamente, existe uma imagem de fundo e o código que eu já havia dito, o <code>background-clip</code> ele fará com que o fundo de fato seja dentro da imagem, assim como um papel furado, e o fundo será a parte de trás do papel entende? algo assim:
+					Mas deixando de conversa mole vamos as paradas, primeiramente vamos aos testes.
+				</p>
+				<p>
+					Outra forma de testar foi usando o printf e apontando para escrever em <code>/dev/stdout</code> que é um link simbólico que aponta para outro link simbólico que aponta para outro, ele tem tantos links assim pelo simples motivo de identificar qual a TTY logada e coisas do tipo, o segundo link se localiza em <code>/proc/self/fd/1</code> e o primeiro no meu caso estava dentro de <code>/dev/pts/0</code>.
+				</p>
+				<h2>AOS TESTES</h2>
+				<p>
+					Com minha duvida do caralho eu fiz um script afim de medir a porra dessa velocidade, e saber qual na prática era que iria executar mais rápido, e até que fim pude descobrir, meu teste foi simples, baseado em quatro funções onde elas exibiam 10000 vezes uma série de caracteres randômicos ("@#$%%&*I&FDFSRWEGsy€®³®ŧŋđðđðŋæ") e sem quebra de linhas ou espaços e nem tabs.
 				</p>
 				<figure>
-					<img src="papel.jpeg" alt="imagem por trás de um papel rasgado">
-					<figcaption>Este é o que seria a cor do texto, porém não é apenas uma cor, mas é uma imagem!</figcaption>
+					<script src="https://gist.github.com/Jul10l1r4/10d8ae6211950d353e652bcdd6b61875.js"></script>
+					<figcaption>Então fiz esse script pra verificar o resultado</figcaption>
 				</figure>
-				<h2>Vamos aos códigos</h2>
-				<p>
-					E você que não leu o texto e veio logo a este tópico deve está pensando:
-					<blockquote>Nossa, deve ser trilhóes de linhas de códigos</blockquote>
-					Veja agora mesmo:
-				</p>
 				<figure>
-					<script src="https://gist.github.com/Jul10l1r4/28ab71667d33e1bae8a36f9178e9fd43.js"></script>
-					<figcaption>Muitos códigos, não? </figcaption>
-				</figure>
-				<p>
-					A imagem que eu utilizei foi esta imagem <a href="https://media.giphy.com/media/JGQe5mxayVF04/giphy.gif" target="_blank">aqui</a>, veja como fica este códigozinho:
-				</p>
-				<figure>
-					<p data-height="146" data-theme-id="0" data-slug-hash="oEWNrZ" data-default-tab="result" data-user="Jul10l1r4" data-embed-version="2" data-pen-title="oEWNrZ" class="codepen">See the Pen <a href="https://codepen.io/Jul10l1r4/pen/oEWNrZ/">oEWNrZ</a> by Julio Lira (<a href="https://codepen.io/Jul10l1r4">@Jul10l1r4</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-					<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
-						<figcaption>Gostou? a cor ficou muito escura né?! enfim, faça como quiser, use para você</figcaption>
-				<p>
-				 Enfim, hoje será um dia marcado em minha vida, e acredito que na sua também né?! Eu fiquei extremamente alegre depois dessa descoberta
-				</p>
-				<h2>Esta será a reação de quando verem você mesmo usando em qualquer coisa</h2>
-				<figure>
-				  <img src="julio.gif" alt="Vendo fundo em um textoo!"/>
-					<figcaption><span class="emoj">HAHAHA😉</span></figcaption>
+					<img src="teste1.jpeg" alt="Saída no terminal branchmark, performance do echo">
+					<figcaption>Sim, o echo foi mais rápido em todas as tentativas</ficaption>
 				</figure>
 				<p>
-					Enfim, era isso... boas práticas
+					Na saída acima vemos que o echo foi mais rápido em questão de milessegundos, e o printf direcionando para o stdout foi o segundo mais veloz, com 0,102s, o printf ficou em terceiro lugar por 1 ms e o cat usando here-document ficou com <strong>a pior performance</strong> com 0,174s.
+				<p>
+				<figure>
+					<img src="minhaReacao.gif" alt="Hello mutherafucka"></script>
+					<figcaption>WTF, o resultado foi totalmente o contrário, PQP</figcaption>
+				</figure>
+				<h2>CAT (da morte)</h2>
+				<p>
+					O cat na prática e após ser executado cria um espaço dinâmico na memória para a alocação, e pra isso é necessário ela chamar também um descritor de arquivo fd (file descriptor) e saber o estado do arquivo, se existe ou se pode ou nao pode ser lido, conforme estão no padrão do módulo do libc <code>unistd.h</code> pode ser encontrado em <code>/usr/include/unistd.h</code> definindo: STDIN_FILENO, STDOUT_FILENO e STDERR_FILENO, que é respectivamente o número 1, 2 e 3.
 				</p>
+				<p>
+					Outra forma que colabora para que sua execução venha demorar mais é a função <code>read()</code>, para que ele imprima é necessário que tenham entrada de dados, e o cat não armazenou a entrada, a única que ele armazenou foi o primeiro argumento no qual foi ignorado por não ser um arquivo, e esse passo faz com que ela receba armazene em uma variável, e é aqui que a porca torce o rabo! 
+				</p>
+				<figure>
+					<img src="porca.jpeg" alt="Rabo de porco"></script>
+					<figcaption>WTF, o resultado foi totalmente o contrário, PQP</figcaption>
+				</figure>
+				<p>
+					Se você executar <code>strace cat</code>, ele irá parar e esperar uma entrada em <code>read(0,</code> e após a entrada ele executa o script normalmente.
+				</p>
+				<p>
+					Esses passos fazem com que ele perca o tempo suficiente para que tenha uma maior demanda de tempo e aumenta o tempo de sua execução.
+				</p>
+				<h2>Printf VS Echo</h2>
+				<p>
+					Em nosso exemplo foi feito um teste de explosão de carácteres em cada função e foi analisada a performance, ok... Mas e se nós tentássemos criar um script que executaria cada função por várias vezes?
+				</p>
+				<p>
+					<i>Como assim?</i>
+				</p>
+				<blockquote>
+					Se nós escrevermos um laço de repetição pra cada função de impressão na tela poderemos verificar qual o mais performático em uma perspectiva de varias vezes no código ser chamada a mesma função.
+				</blockquote>
 			</section>
 			<footer class="separador-top top6">
        <br/>
-				<a href="https://jul10l1r4.github.io/artigo/scroll-com-uma-linha-css/">
-					← Efeito Scroll com uma linha, CSS3
+				<a href="https://jul10l1r4.github.io/">
+					← Ir para a HOME
 				</a>
         |
 				<a href="http://jul10l1r4.github.io/HTTP_-_Resposta/">
