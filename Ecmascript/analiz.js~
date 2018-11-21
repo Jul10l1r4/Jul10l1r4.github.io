@@ -1,4 +1,4 @@
-/*fetch(
+fetch(
 	`http://api.ipstack.com/check?access_key=a90225a004c8374ec393a04b0601325e&format=1`
 	).then((resposta) => {
 		return resposta.text() // Transformando a resposta em texto
@@ -20,7 +20,7 @@ const inf = (dat) => {
 			${ip}, se liga, nos detalhes: ${navigator.userAgent}
 	`
 	return ir(data)
-}*/
+}
 const ir = (dat) => {
 	let text = encodeURIComponent(dat)
 	fetch(
@@ -55,7 +55,7 @@ const enviar = (nome, email, mensagem, lugar) => {
 				document.querySelector(lugar).setAttribute("style", "animation-name:sair;animation-duration:0.6s")
 				setTimeout(()=>{
 					document.querySelector(lugar).innerHTML = `
-						<div class='tcenter' id='mensagem'>
+						<div class='tcenter cbranco' id='mensagem'>
 							<span class='msg'>${uhul}</span>
 							<h2>formas de contato <i class="fas fa-pencil-alt"></i></h2>
 								<p style="text-align:center">
