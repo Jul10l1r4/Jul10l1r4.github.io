@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 	<head>
       <meta charset="utf-8"/>
-      <title>Shell script e performance psicopata 🔪 – stdout, echo printf ou cat com o here document? Veja qual se sai mais veloz | Julio Lira</title>	
+      <title>Shell script e performance psicopata 🔪 – stdout, echo printf ou cat com o here document? Veja qual se sai mais veloz	 | Julio Lira</title>	
       <!--link rel="icon" type="image/png" href="img/favicon.png" /-->
       <meta name="viewport" content="width=device-width, user-scalable=no"/>
       <link rel="stylesheet" href="https://jul10l1r4.github.io/Texto-farmatacao/principal.css"/>
@@ -136,6 +136,20 @@
 				<blockquote>
 					Se nós escrevermos um laço de repetição pra cada função de impressão na tela poderemos verificar qual o mais performático em uma perspectiva de varias vezes no código ser chamada a mesma função.
 				</blockquote>
+				<figure>
+					<script src="https://gist.github.com/Jul10l1r4/ca98011f88bc2ae49aa925450b0e7373.js"></script>
+					<figcaption>Então verifiquei realizando esse teste</figcaption>
+				</figure>
+				<figure>
+					<img src="teste-louco.jpeg" alt="Teste de performance branchmark entre echo cat e printf"/>
+					<figcaption>Notei insconscistencia entre o resultado do echo e o do printf puro</figcaption>
+				<p>
+					Notei que diferentes vezes que eu realizava o mesmo teste o resultado do echo era mais rápido e outros mais lento do que o da função no printf, isso me incomodou bastante, mas se notarmos o embora o resultado seja diferente, as duas funções na prática são muito semelhantes, mas existem algumas diferenças que acho interessante detalhar.
+				</p>
+				<h2>Estudando o fruto desde a raiz</h2>
+				<p>
+					As duas funções são de cara executadas pelo bash e de lá é direcionado a abrir um outro binário que é o correspondente que no caso é o <strong>echo</strong> e o <strong>printf</strong> elas duas são invocadas de <code>/usr/bin/binário</code> e é feita toda a alocação, definição de leitura e armazenamento de "arquivo" (como é tratado qualquer coisa nos Unix-likes), em um determinado momento que está tudo certo ele chega a criar o arquivo virtual para direcionar ao <code>STDOUT</code> (já citado anteriormente) e em que a nível de sistema ele chama a função <code>fstat</code> do módulo C <code>stat</code> (que pode ser encontrado em /usr/include/(plataforma)-linux-gnu/sys/stat.h) em que é alogo como <code>fstat(1, {st_mode=S_IFCHR|0620 ...</code>, o <code>st_mode</code> é o valor de configuração que seta qual será o tipo de arquivo a ser retornado, e a opção preenchida foi <code>S_IFCHR</code> que é significa que o arquivo é um de caracteres especiais, e seguido isso usa-se um pipe ("|" Essse símbolo) no trecho mostrado
+				</p>
 			</section>
 			<footer class="separador-top top6">
        <br/>
