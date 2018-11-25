@@ -161,11 +161,8 @@
 				</p>
 				<h2>Conclusão</h2>
 				<p>
-					Sendo isso é possível notar que o <code>printf</code> saiu mais veloz em varias chamadas repetidas, e o echo se saiu mais veloz em apenas uma chamada de uma vez, mesmo não havendo diferenças relevantes entre as duas. <a href="" target="_blank">Faça você mesmo</a> teste em sua plataforma, verifique você mesmo, as vezes nem sempre o <code>printf</code> será aconselhado, já que pode ser usado o echo e ele já terminará em uma quebra de linha, sem precisar de que digite o <code>\n</code>, além de tudo isso os comandos com formatação e coloração, são todos suportados por padrão no printf (tanto no bash quanto no C, que também pode ser usado o write, o que seria mais low-level), já o <code>echo</code> precisaria passar o parâmetro <code>-e</code>.
+					Sendo isso é possível notar que o <code>printf</code> saiu mais veloz em varias chamadas repetidas, e o echo se saiu mais veloz em apenas uma chamada de uma vez, mesmo não havendo diferenças relevantes entre as duas. <a href="https://github.com/Jul10l1r4/Stdout-veloz/" target="_blank">Faça você mesmo</a> teste em sua plataforma, verifique você mesmo, as vezes nem sempre o <code>printf</code> será aconselhado, já que pode ser usado o echo e ele já terminará em uma quebra de linha, sem precisar de que digite o <code>\n</code>, além de tudo isso os comandos com formatação e coloração, são todos suportados por padrão no printf (tanto no bash quanto no C, que também pode ser usado o write, o que seria mais low-level), já o <code>echo</code> precisaria passar o parâmetro <code>-e</code>.
 				</p>
-				<blockquote>
-					Caso também esteja curioso em ver o mesmo código executado em C, a diferença absurda entre apos a compilação e um script pre-moldado, olhe <a href="" target="_blank">esse projeto</a>.
-				</blockquote>
 				<p>
 					Dada as métricas, cabe a você estudar a sua situação e verificar qual o que melhor se encaixa para seu ambiente, sabemos que 1 ms faz toda a diferença em nossos servidores :)
 				</p>
@@ -181,4 +178,4 @@
 				</a>
 			</footer>
     </body>
-  </html>
+  </html>		
