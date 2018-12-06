@@ -9,3 +9,6 @@ Allow:/artigo/Seja_performatico_-_efeito_scroll_com_6_linhas_sem_jquery/
 Allow:/artigo/scroll-com-uma-linha-css/
 Allow:/artigo/background-em-texto/
 Allow:/artigo/
+Allow:/artigo/Vulnerabilidade-em-balanceadores-mod_jk-[CVE-2018-11759]
+Allow:/artigo/*
+
