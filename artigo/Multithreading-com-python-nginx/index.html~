@@ -52,7 +52,7 @@
 				</div>
 			</header>
 			<a id="down" href="#conteudo">Veja como obter o máximo que pode do Python com Nginx</a>
-			<section class="medium-text sobre">
+			<section class="medium-text">
 				<p id="conteudo">
 					É obvio que a vontade de todo administrador, desenvolvedor, devops ou o que seja é que haja uma alta disponibilidade no resultado final de qualquer projeto.
 				</p>
@@ -99,11 +99,24 @@
 				<p>
 					Com um callback será possível mandar primeiramente o texto estático e após isso realizar a conexão com o banco, pois dependendo de onde fica o banco isso pode ser um gargalo, e então o frontend receberá a resposta enquanto  o backend ainda processa a informação.
 				</p>
+				<h1>Show-me the f*ck code</h1>
+				<p>
+					Então vamos aos testes, reproduzi dois códigos que sejam posível ser testado em sua máquina local sem com que precise de
+					banco de dados, segue o código
+				</p>
 				
+				<figure>
+					<script src="https://gist.github.com/Jul10l1r4/1fd4ad230f82ce4c28a493ee5c72dbb9.js"></script>
+					<figcaption>Código simpes que gera várias requisições</figcaption>
+				</figure>
 				<p>
+					E também utilizei o mesmo código para outro teste, e isso mostrará de forma prática o uso de várias linhas. Isso é
+					as várias threads definidas fazem com que ele realize paralelamente as várias requisições.
 				</p>
-				<p>
-				</p>
+				<figure>
+					<script src="https://gist.github.com/Jul10l1r4/1fd4ad230f82ce4c28a493ee5c72dbb9.js"></script>
+					<figcaption>Código simpes que geram várias requisições</figcaption>
+				</figure>
 			</section>
 			<footer class="separador-top top6">
        <br/>
