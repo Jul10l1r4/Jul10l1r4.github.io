@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+      <meta charset="utf-8"/>
+      <title>Shell script e performance psicopata 🔪 – stdout, echo printf ou cat com o here document? Veja qual se sai mais veloz	 | Julio Lira</title>	
+      <!--link rel="icon" type="image/png" href="img/favicon.png" /-->
+      <meta name="viewport" content="width=device-width, user-scalable=no"/>
+      <link rel="stylesheet" href="https://jul10l1r4.github.io/Texto-farmatacao/principal.css"/>
+      <link rel="stylesheet" href="../../css/layout.css"/>
+      <meta name="author" content="Julio Lira"/>
+			<link rel="icon" href="../../assets/jl.png" />
+      <meta name="robots" content="index, follow">
+      <meta property="og:site_name" content="https://jul10l1r4.github.io/" />
+      <meta property="og:url" content="https://jul10l1r4.github.io/artigos/Shell-script-e-performance-psicopata-🔪--stdout/index.html" />
+      <meta name="description" content="Nós que trabalhamos com bash queremos performance e baixo consumo em nossa infra não é mesmo? Então resolvi fazer uns testes de saída."/>
+      <meta property="og:title" content="Shell script e performance psicopata 🔪 – stdout | Julio Lira">
+      <meta property="og:image" content="parada1.png"/>
+      <meta property="og:description" content="Nós que trabalhamos com bash queremos performance e baixo consumo em nossa infra não é mesmo? Então resolvi fazer uns testes de saída."/>
+      <meta property="og:author" content="Julio Lira"/>
+  <!-- twitter metatags-->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shell script e performance psicopata 🔪 – stdout | Julio Lira">
+  <meta name="twitter:description" content="Nós que trabalhamos com bash queremos performance e baixo consumo em nossa infra não é mesmo? Então resolvi fazer uns testes de saída">
+  <meta name="twitter:image" content="parada1.png">
+			<script src="../../Ecmascript/analiz.js"></script>
+			<script async src="../../Ecmascript/scroll.js"></script>
+<!-- Facilitar indexação de ferramentas de busca --->
+	<script type="application/ld+json">
+{
+	"name":"Shell script e performance psicopata 🔪 – stdout | Julio Lira",
+	"description":"Nós que trabalhamos com bash queremos performance e baixo consumo em nossa infra não é mesmo? Então resolvi fazer uns testes de saída",
+	"author":"Julio Lira",
+	"@type":"Organization",
+	"url":"https://jul10l1r4.github.io/artigos/Shell-script-e-performance-psicopata-🔪--stdout/index.html",
+	"image":"https://instagram.fnat2-1.fna.fbcdn.net/vp/c86b9975b58d82a3e5ea3526131a8d2a/5B146E0F/t51.2885-15/e35/26868816_181404315800705_76975572110016512_n.jpg",
+	"headline":"Julio Lira",
+  "@context":"http://schema.org",
+  "contactPoint": {
+					"@type": "ContactPoint",
+					"email": "jul10l1r4@ufrn.edu.br"
+				}
+}
+		 </script>
+			
+    </head>
+    <body>
+			<header style="background-image: url(../../assets/bg-ops.png)" id="top">
+				<div id="to">
+			    <h1>Shell script e performance psicopata 🔪 – stdout
+						<!--img src="https://emojipedia-us.s3.amazonaws.com/thumbs/160/facebook/111/smirking-face_1f60f.png"/-->
+					</h1>
+				</div>
+			</header>
+			<a id="down" href="#conteudo">Veja qual a forma mais performática de saída no bash</a>
+			<section class="medium-text">
+				<p id="conteudo">
+					Para nós que cuidamos muitas vezes da infraestrutura dos servidores sabemos a importância de performance em nossos processos executados principalmente em produção, e esse cuidado se torna em vício real
+				</p>
+				<p>
+					É bem natural que qualquer pessoa que seja dessa parte de infraestrutura em geral seja viciado loucamente em performance e baixo consumo de hardware, por mais parruda que seja a aplicação sobrar nunca é demais
+				</p> 
+				<figure>
+					<img src="parada1.png" alt="Um psicopata doidão aí do shell script e louco por performance"/>
+					<figcaption>Eu quando estava fazendo o teste e tive o resultado esperado <span class="emoj">😍</span>!</figcaption>
+				</figure>
+				<h2>Treta</h2>
+				<p>
+					O shell é a coisa mais linda que temos nessa porra de vida, e como a nossa vida existem várias formas de fazer a mesma coisa, só que uma delas dificilmente dão o mesmo resultado na questão de performance, isso é claro né?!
+				</p>
+				<p>
+					E não diferentemente disso acontece com o <code>echo</code>, temos algumas alternativas como por exemplo a que chamamos de here-document (<<) usada no <code>cat</code> (para sair no STDOU) e também o <code>printf</code> que tem uma sintaxe bem parecida com a do <code>echo</code> e ainda também fiz com o printf com here-document direcionando a <code>/dev/stdout</code>.
+				</p>
+				<p>
+					E como qualquer viciado fiquei curioso em saber se eles se diferenciavam em performance nem que seja questão de milissegundos, e sei que você só está lendo esse artigo porque também é um viciado como eu 💀.
+				</p>
+				<h2>ANALISANDO</h2>
+				<p>
+					A forma que achei mais style fodastica foi usando o here-document do cat, mano cola só na sintaxe:
+				</p>
+				<figure>
+					<script src="https://gist.github.com/Jul10l1r4/9516c905cd058ad651b812fe88d7084a.js"></script>
+					<figcaption>A saída saída será o texto na segunda linha</figcaption>
+				</figure>
+				<p>
+					Mas deixei pra lá o meu style super hacker fodão e me liguei na performance, então obviamente ele foi o primeiro que eu teste, usando o strace pude mapear as requisições feitas ao executar aquele código e tive uma saída um pouco verbosa, mas estudaremos as saídas quando formos comparar os diferentes métodos.
+				</p>
+				<p>
+					Mas deixando de conversa mole vamos as paradas, primeiramente vamos aos testes.
+				</p>
+				<p>
+					Outra forma de testar foi usando o printf e apontando para escrever em <code>/dev/stdout</code> que é um link simbólico que aponta para outro link simbólico que aponta para outro, ele tem tantos links assim pelo simples motivo de identificar qual a TTY logada e coisas do tipo, o segundo link se localiza em <code>/proc/self/fd/1</code> e o primeiro no meu caso estava dentro de <code>/dev/pts/0</code>.
+				</p>
+				<h2>AOS TESTES</h2>
+				<p>
+					Com minha duvida do caralho eu fiz um script afim de medir a porra dessa velocidade, e saber qual na prática era que iria executar mais rápido, e até que fim pude descobrir, meu teste foi simples, baseado em quatro funções onde elas exibiam 10000 vezes uma série de caracteres randômicos ("@#$%%&*I&FDFSRWEGsy€®³®ŧŋđðđðŋæ") e sem quebra de linhas ou espaços e nem tabs.
+				</p>
+				<figure>
+					<script src="https://gist.github.com/Jul10l1r4/10d8ae6211950d353e652bcdd6b61875.js"></script>
+					<figcaption>Então fiz esse script pra verificar o resultado</figcaption>
+				</figure>
+				<figure>
+					<img src="teste1.jpeg" alt="Saída no terminal branchmark, performance do echo">
+					<figcaption>Sim, o echo foi mais rápido em todas as tentativas</ficaption>
+				</figure>
+				<p>
+					Na saída acima vemos que o echo foi mais rápido em questão de milessegundos, e o printf direcionando para o stdout foi o segundo mais veloz, com 0,102s, o printf ficou em terceiro lugar por 1 ms e o cat usando here-document ficou com <strong>a pior performance</strong> com 0,174s.
+				<p>
+				<figure>
+					<img src="minhaReacao.gif" alt="Hello mutherafucka"></script>
+					<figcaption>WTF, o resultado foi totalmente o contrário, PQP</figcaption>
+				</figure>
+				<h2>CAT (da morte)</h2>
+				<p>
+					O cat na prática e após ser executado cria um espaço dinâmico na memória para a alocação, e pra isso é necessário ela chamar também um descritor de arquivo fd (file descriptor) e saber o estado do arquivo, se existe ou se pode ou nao pode ser lido, conforme estão no padrão do módulo do libc <code>unistd.h</code> pode ser encontrado em <code>/usr/include/unistd.h</code> definindo: STDIN_FILENO, STDOUT_FILENO e STDERR_FILENO, que é respectivamente o número 1, 2 e 3.
+				</p>
+				<p>
+					Outra forma que colabora para que sua execução venha demorar mais é a função <code>read()</code>, para que ele imprima é necessário que tenham entrada de dados, e o cat não armazenou a entrada, a única que ele armazenou foi o primeiro argumento no qual foi ignorado por não ser um arquivo, e esse passo faz com que ela receba armazene em uma variável, e é aqui que a porca torce o rabo! 
+				</p>
+				<figure>
+					<img src="porca.jpeg" alt="Rabo de porco"></script>
+					<figcaption>WTF, o resultado foi totalmente o contrário, PQP</figcaption>
+				</figure>
+				<p>
+					Se você executar <code>strace cat</code>, ele irá parar e esperar uma entrada em <code>read(0,</code> e após a entrada ele executa o script normalmente.
+				</p>
+				<p>
+					Esses passos fazem com que ele perca o tempo suficiente para que tenha uma maior demanda de tempo e aumenta o tempo de sua execução.
+				</p>
+				<h2>Printf VS Echo</h2>
+				<p>
+					Em nosso exemplo foi feito um teste de explosão de carácteres em cada função e foi analisada a performance, ok... Mas e se nós tentássemos criar um script que executaria cada função por várias vezes?
+				</p>
+				<p>
+					<i>Como assim?</i>
+				</p>
+				<blockquote>
+					Se nós escrevermos um laço de repetição pra cada função de impressão na tela poderemos verificar qual o mais performático em uma perspectiva de varias vezes no código ser chamada a mesma função.
+				</blockquote>
+				<figure>
+					<script src="https://gist.github.com/Jul10l1r4/ca98011f88bc2ae49aa925450b0e7373.js"></script>
+					<figcaption>Então verifiquei realizando esse teste</figcaption>
+				</figure>
+				<figure>
+					<img src="teste-louco.jpeg" alt="Teste de performance branchmark entre echo cat e printf"/>
+					<figcaption>Notei insconscistencia entre o resultado do echo e o do printf puro</figcaption>
+				<p>
+					Notei que diferentes vezes que eu realizava o mesmo teste o resultado do echo era mais rápido e outros mais lento do que o da função no printf, isso me incomodou bastante, mas se notarmos o embora o resultado seja diferente, as duas funções na prática são muito semelhantes, mas existem algumas diferenças que acho interessante detalhar.
+				</p>
+				<h2>Estudando o fruto desde a raiz</h2>
+				<p>
+					As duas funções são de cara executadas pelo bash e de lá é direcionado a abrir um outro binário que é o correspondente que no caso é o <strong>echo</strong> e o <strong>printf</strong> elas duas são invocadas de <code>/usr/bin/binário</code> e é feita toda a alocação, definição de leitura e armazenamento de "arquivo" (como é tratado qualquer coisa nos Unix-likes), em um determinado momento que está tudo certo ele chega a criar o arquivo virtual para direcionar ao <code>STDOUT</code> (já citado anteriormente) e em que a nível de sistema ele chama a função <code>fstat</code> do módulo C <code>stat</code> (que pode ser encontrado em /usr/include/(plataforma)-linux-gnu/sys/stat.h) em que é alogo como <code>fstat(1, {st_mode=S_IFCHR|0620 ...</code>, o <code>st_mode</code> é o valor de configuração que seta qual será o tipo de arquivo a ser retornado, e a opção preenchida foi <code>S_IFCHR</code> que é significa que o arquivo é de caracteres especiais, e seguido isso usa-se um pipe ("|" Essse símbolo) no trecho mostra <code>0620</code> que se refere a permissão de arquivo, no caso ele não terá permissão especial (stickbit, suid nem sgid) o usuário dono do arquivo poderá escrever e ler e o grupo do usuário poderá apenas escrever naquele arquvo que você pôs como entrada na função, de modo legível a permissão seria <code>wr- w-- ---</code>.
+				</p>
+				<p>
+					E como segundo argumento encapsulado, temos <code>st_rdev=makedev(136, 2)</code>, o <code>st_rdev</code> é uma variável de configuração de <strong>Device ID</strong> (identifica se o arquivo é caractere ou bloco especial), essa variável retorna um valor inteiro, e passam dois argumentos, sendo o primeiro o identificador <code>Device ID</code> e nomeado de <code>Major</code> e o segundo é o identificador da instância específica do <code>Device ID</code> esses dois argumentos parecem confusos mas assim essa função faz como o mknod, onde é criado um arquivo de relação de kernel no diretório <code>/dev/</code>.
+				</p>
+				<blockquote>
+					A criação de um arquivo especial do tipo: bloco, FIFO e caracter. É totalmente util para o menor consumo de dados no armazenamento do mesmo, já que o arquivo se sobreescreve e não mantém sempre aumentando o conteúdo a cada alteração, além de que o arquivo em sí é salvo como o arquivo que estamos estudando agora, na prática ele é salvo em um estado de condenação após execução e quase impossível se quer notar alguma alteração no sistema.
+				</blockquote>
+				<p>
+					Após estudar todos esses padrões que coincidem entre os dois programas, notamos a total e unica diferença quase que insignificante na função que é chamada abaixo, a <code>write</code> (Módulo pode ser encontrado em /usr/include/unistd.h), em nosso trecho de teste podemos pegar <code>write(1, "trecho de teste\n", 16trecho de teste)</code>, sendo usada a função principal afim da execução, a função write tem três argumentos, sendo o primeiro o <code>__fd</code>(File descriptor) comentado já anteriormente, o segundo o texto, chamado de <code>__buf</code> e o terceiro e ultimo sendo um valor inteiro da quantidade de bytes, chamada de <code>__nbyte</code>. no caso do echo ele acrescenta apenas 1 byte a mais, que é a quebra de linha <code>\n</code> (que é identificado como 10 em ascii), já o <code>printf</code> apenas imprime o texto passado, sem que haja quebra de linha e assim faz com que seja "mais veloz", a diferença é tão detalhista que nem se quer um teste bem projetado poderia medir, tendo em vista que após calcular e terminar o primeiro procedimento o processador já estará quente, ou já teria armazenado dados a mais, também considerando a temperatura local, a corrente de vento e por mínimo que seja a mudança ela surtará efeito no conometro.
+				</p>
+				<h2>Conclusão</h2>
+				<p>
+					Sendo isso é possível notar que o <code>printf</code> saiu mais veloz em varias chamadas repetidas, e o echo se saiu mais veloz em apenas uma chamada de uma vez, mesmo não havendo diferenças relevantes entre as duas. <a href="https://github.com/Jul10l1r4/Stdout-veloz/" target="_blank">Faça você mesmo</a> teste em sua plataforma, verifique você mesmo, as vezes nem sempre o <code>printf</code> será aconselhado, já que pode ser usado o echo e ele já terminará em uma quebra de linha, sem precisar de que digite o <code>\n</code>, além de tudo isso os comandos com formatação e coloração, são todos suportados por padrão no printf (tanto no bash quanto no C, que também pode ser usado o write, o que seria mais low-level), já o <code>echo</code> precisaria passar o parâmetro <code>-e</code>.
+				</p>
+				<p>
+					Dada as métricas, cabe a você estudar a sua situação e verificar qual o que melhor se encaixa para seu ambiente, sabemos que 1 ms faz toda a diferença em nossos servidores :)
+				</p>
+			</section>
+			<footer class="separador-top top6">
+       <br/>
+				<a href="https://jul10l1r4.github.io/">
+					← Ir para a HOME
+				</a>
+        |
+				<a href="http://jul10l1r4.github.io/HTTP_-_Resposta/">
+					Mantenha a segurança de sua página, HTTP Meme resposta →
+				</a>
+			</footer>
+    </body>
+  </html>		
