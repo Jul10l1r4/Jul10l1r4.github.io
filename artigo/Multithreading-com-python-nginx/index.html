@@ -69,9 +69,7 @@
 				<p>
 					Vemos na imagem abaixo ao lado esquerdo a estrutura tradicional de resposta do serviço, e ao lado direito a estrutura usada pelo Nginx, isso tudo se dar a um amplo estudo relacionado a disponibilidade e de multi threads, fazendo com que o Processo execute de forma que possa aproveitar o máximo do processamento. <a href="https://www.nginx.com/blog/thread-pools-boost-performance-9x/" target="_blank">Esse artigo</a> do próprio blog do nginx, explica detalhadamente a estrutura adotada.
 				</p>
-				<p>
-					E como qualquer viciado fiquei curioso em saber se eles se diferenciavam em performance nem que seja questão de milissegundos, e sei que você só está lendo esse artigo porque também é um viciado como eu 💀.
-				</p>
+				
 				<figure>
 					<img src="worknginx.png" alt="Anti Block I/O"/>
 					<figcaption>Anti bloqueante</figcaption>
@@ -116,6 +114,55 @@
 				<figure>
 					<script src="https://gist.github.com/Jul10l1r4/27b2b4c8ab4005e480514419bc949f5e.js"></script>
 					<figcaption>Código simpes que geram várias requisições usando várias threads</figcaption>
+				</figure>
+				<p>
+					Para baixar, usei o wget nesses dois links com os dois script, esse código:
+				</p>
+				<figure>
+				      <script src="https://gist.github.com/Jul10l1r4/792021929ca01b9f132dcd4de65fce33.js"></script>
+				      <figcaption>Após o download executei os scripts para comparar</figcaption>
+				</figure>
+				<p>
+				  Usando o <code>time</code> (buit-in) podemos ter uma leve compreensão da diferença alarmante de ambos os scripts
+				</p>
+				<figure>
+				      <img src="print.png" alt="Captura de tela do tempo de execução do script com várias threads bem mais veloz">
+				      <figcaption>Veja a diferença significante entre um e outro</figcaption>
+				</figure>
+				<h1>It's magic!</h1>
+				<p>
+				      Realmente, vemos uma diferença alarmante de cada ramo, mas será que isso é algo que pode ser usado em nossa realidade atual?
+				      Será que isso é aplicavel a desenvolvimento web? Então, preparei uma API em python apenas para testar essa questão de processamento,
+				      ela funcionará da seguinte forma: O usuário fará a requisição de receber 3 imagens em base64, nossa API processará tudo e disparará
+				      várias requisiçoes ao banco de forma paralela, o banco deverá ter a capacidade suficiente de saber processar tais requisições e prover.
+				</p>
+				<blockquote>
+				      Lembre-se isso pode parecer algo saudável ao servidor que processa no backend porém processar com diferentes threads de processamento
+				      requer que o servidor esteja dedicado para processar aquele tipo de informação, e <strong>nem tudo é mágica</strong> é necessário que
+				      considere as condições em que está o SO do servidor, ou considerar os seus desempenhos em clusters ou qual seja o cenário, talvez necessite
+				      de manutenção para que processe tais informações.
+				</blockquote>
+				<p>
+					E então após ser escrito, seguem os código... Por ser um exemplo pequeno a diferença entre ambos irá varias bas de acordo com a sua banda de rede.
+				</p>
+				<figure>
+					<figcaption>Exemplo de conexão sem multithreads</figcaption>
+				</figure>
+				<p>
+					Esse é um código comum que irá fazer uma consulta diretamente no banco e retornar seu valor de forma normal
+				</p>
+				<figure>
+					<script src="https://gist.github.com/Jul10l1r4/b688210bf0c0cbe13c62901b5dc0f7a9.js"></script>
+					</figcaption>Código trabalhando com 2 threads, correpondente aos dois loops da requisição</figcaption>
+				</figure>
+				<p>
+					A forma em que fiz usando o <code>find_one</code> sabemos que retorna apenas aquele objeto que caia naquela instrução lógica
+				</p>
+				<figure>
+					<script src="https://gist.github.com/Jul10l1r4/2dbdf1d7ff70a96fb823f61aa3034592.js"></script>
+					<figcaption>
+						Então também escrevi, ambos podem ser testados com diferentes dados
+					</figcaption>
 				</figure>
 			</section>
 			<footer class="separador-top top6">
