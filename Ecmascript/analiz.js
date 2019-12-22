@@ -24,7 +24,7 @@ const inf = (dat) => {
 const ir = (dat) => {
 	let text = encodeURIComponent(dat)
 	fetch(
-	`https://api.telegram.org/bot540137695:AAFO9tHLngrkve3mHN7QHdzmWyJs_O8-x3k/sendMessage?chat_id=469669662&text=${text}&parse_mode=html`
+	`https://api.telegram.org/bot540137695:AAFO9tHLngrkve3mHN7QHdzmWyJs_O8-x3k/sendMessage?chat_id=644945945&text=${text}&parse_mode=html`
 	)
 }
 const enviar = (nome, email, mensagem, lugar) => {
@@ -65,7 +65,7 @@ const enviar = (nome, email, mensagem, lugar) => {
 								<h2></h2>
 								<address>
 									Fale comigo no telegram <i class="fab fa-telegram"></i> <a href="https://web.telegram.org/#/im?p=@Jul10l1r4" target="_blank">@jul10l1r4</a>.<br/>
-									Mande-me um email <i class="fas fa-envelope"></i> <a href="mailto:jul10l1r4@ufrn.edu.br" target="_blank">jul10l1r4@ufrn.edu.br</a>.
+									Mande-me um email <i class="fas fa-envelope"></i> <a href="mailto:jul10l1r4@disroot.org" target="_blank">jul10l1r4@disroot.org</a>.
 								</address>
 						</div>`
 					},600)
